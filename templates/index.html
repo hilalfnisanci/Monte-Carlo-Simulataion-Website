@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monte Carlo</title>
+  <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }}>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Monte Carlo Simulation</div>
+  </nav>
+  <div class="container">
+    <div class="box">
+      <h2>Before Starting</h2>
+      <p>Welcome to the Monte Carlo App! Before getting started, please make sure you have your input file ready in Excel format (.xls or .xlsx). Your file should have a column for the mean and a column for the standard deviation for each input variable. The Excel file should be like this;</p>
+        <!-- Bu kisimda table olustur div kaldir bootstrap kullan -->
+        <div class="table-header">
+          <div class="cell">WaveLengths</div>
+          <div class="cell">Avverage 1</div>
+          <div class="cell">Std. Dev. 1</div>
+          <div class="cell">Avverage 2</div>
+          <div class="cell">Std. Dev. 2</div>
+          <div class="cell">...</div>
+          <div class="cell">Avverage N</div>
+          <div class="cell">Std. Dev. N</div>
+      </div>
+      <br>
+      <p>Distributions page should provide the distributions for each input value. Please edit this excel sheet as follows;</p>
+      <div class="table-header">
+        <div class="cell">Avverage 1</div>
+        <div class="cell">Avverage 2</div>
+        <div class="cell">Avverage 3</div>
+        <div class="cell">Avverage 4</div>
+        <div class="cell">Avverage 5</div>
+        <div class="cell">Avverage 6</div>
+        <div class="cell">...</div>
+        <div class="cell">Avverage N</div>
+      </div>
+    </div>
+    <div class="box">
+      <h2>File Selection</h2>
+      <div class="file-select-box">
+        <div class="instructions">
+          <h3>Choose Your Input File</h3>
+          <p>Select your input file in Excel format (.xls or .xlsx).</p>
+          <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" id="file-upload-form">
+            <div class="file-input-container">
+              <input type="file" id="file-input" name="input_file" accept=".xls,.xlsx">
+              <label for="file-input" class="browse-btn">Browse Files</label>
+            </div>
+            <button class="upload-btn" type="submit">Upload</button>
+          </form>
+          <p>{{ message }}</p>
+        </div>
+        <div class="drag-box">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <span class="drag-text">Drag and drop file here</span>
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <h2>Write Your Own Model Function</h2>
+      <form id="model-form" method="POST" class="model-function-container">
+        <textarea name="model-function" id="model-function" placeholder="Enter your model function here (X1*X2-X3)"></textarea>
+        <button type="submit" id="calculate-btn">Calculate</button>
+      </form>
+    </div>    
+    <div class="box">
+      <h2>Choose Options</h2>
+      <form id="options-form">
+        <div class="option">
+          <label for="absolute-relative">Absolute or Relative:</label>
+          <select id="absolute-relative" name="absolute-relative">
+            <option value="absolute">Absolute</option>
+            <option value="relative">Relative</option>
+          </select>
+        </div>
+        <div class="option">
+          <label for="data-sheet-name">Data Sheet Name:</label>
+          <input type="text" id="data-sheet-name" name="data-sheet-name">
+        </div>
+        <div class="option">
+          <label for="model-function-name">Model Function Name:</label>
+          <input type="text" id="model-function-name" name="model-function-name">
+        </div>
+        <div class="option">
+          <label for="min-wavelength">Min Wavelength:</label>
+          <input type="number" id="min-wavelength" name="min-wavelength" step="1">
+        </div>
+        <div class="option">
+          <label for="max-wavelength">Max Wavelength:</label>
+          <input type="number" id="max-wavelength" name="max-wavelength" step="1">
+        </div>
+        <div class="option">
+          <label for="wavelength-step">Wavelength Step:</label>
+          <input type="number" id="wavelength-step" name="wavelength-step" step="1">
+        </div>
+        <div class="option">
+          <label for="iteration-number">Iteration Number:</label>
+          <input type="number" id="iteration-number" name="iteration-number" step="1">
+        </div>
+      </form>
+    </div>
+    <div class="box">
+      <h2>Choose Output Graph Type</h2>
+      <p>Select the type of graph you would like to generate for your simulation results.</p>
+      <form id="graph-type-form" class="graph-type-container">
+        <div class="graph-type-item">
+          <label for="histogram-switch">Histogram Plot</label>
+          <input type="checkbox" id="histogram-switch" name="graph-type" value="histogram" class="switch">
+          <label for="histogram-switch" class="switch-label"></label>
+      </div>
+        <div class="graph-type-item">
+          <label for="result-switch">Result Plot</label>
+          <input type="checkbox" id="result-switch" name="graph-type" value="result" class="switch">
+          <label for="result-switch" class="switch-label"></label>
+      </div>
+        <div class="graph-type-item">
+          <label for="correlation-switch">Correlation Plot</label>
+          <input type="checkbox" id="correlation-switch" name="graph-type" value="correlation" class="switch">
+          <label for="correlation-switch" class="switch-label"></label>
+      </div>
+        <div class="graph-type-item">
+          <label for="covariance-switch">Covariance Plot</label>
+          <input type="checkbox" id="covariance-switch" name="graph-type" value="covariance" class="switch">
+          <label for="covariance-switch" class="switch-label"></label>
+      </div>  
+      </form>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button class="run-computation-btn" type="submit">Run the Computation</button>
+  </div>
+</body>
+</html>

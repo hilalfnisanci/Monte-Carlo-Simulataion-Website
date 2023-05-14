@@ -1,0 +1,370 @@
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #242837;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 80px;
+  z-index: 1;
+}
+
+.navbar .logo {
+  font-size: 2.0em;
+  margin-left: 20px;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Content */
+/* #FIXME: Burayı tekrar gözden geçir*/
+.container {
+  margin: 120px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  flex: 1;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 20px;
+  width: 1000px;
+  height: 189px;
+}
+
+.box h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+/* Bu kisimda table kullan, css degis */
+.table-header {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #aaa;
+}
+
+.cell {
+  flex: 1 0 auto;
+  min-width: 100px;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 5px;
+}
+
+
+/* File input */
+/* Dosya seçim kutusu stilleri */
+.file-select-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  height: 200px;
+}
+
+.file-select-box:hover {
+  border-color: #aaa;
+}
+
+.file-select-box .instructions {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.file-select-box h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.file-select-box p {
+  font-size: 16px;
+}
+
+.file-select-box .drag-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.file-select-box .drag-box {
+  width: 40%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-select-box .drag-box.active {
+  border-color: #aaa;
+}
+
+.file-select-box .drag-box.highlight {
+  background-color: #f7f7f7;
+}
+
+.file-select-box .drag-box.highlight i {
+  color: #aaa;
+}
+
+.file-select-box .drag-box i {
+  font-size: 48px;
+  color: #ccc;
+}
+
+/* Dosya seç butonu stilleri */
+.file-input-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-input-container label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.file-input-container input[type="file"] {
+  display: none;
+}
+
+.file-input-container .file-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.file-input {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.file-input input[type=file] {
+  position: absolute;
+  font-size: 100px;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.browse-btn {
+  margin-top: 10px;
+  display: block;
+  padding: 10px;
+  font-size: 12px;
+  background-color: #242837;
+  color: #fff;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.browse-btn:hover {
+  background-color: #1C1F29;
+}
+
+.upload-btn {
+  display: block;
+  padding: 10px;
+  background: #242837;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.upload-btn:hover {
+  background-color: #1C1F29;
+}
+
+.drag-text {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Model Function textarea styles */
+
+.model-function-container {
+  margin-top: 20px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.model-function-container textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font-size: 14px;
+  resize: none;
+  margin-bottom: 10px;
+
+}
+
+.calculate-button {
+  align-self: flex-end;
+}
+
+.model-function-container button {
+  display: block;
+  padding: 10px;
+  background: #242837;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.model-function-container button:hover {
+  background-color: #1C1F29;
+}
+
+/* Choose Options Field Styles */
+
+.option {
+  margin-bottom: 10px;
+}
+
+.option label {
+  display: inline-block;
+  width: 200px;
+  font-weight: bold;
+}
+
+.option select,
+.option input[type="text"],
+.option input[type="number"] {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Choose Output Graphs Styles */
+
+.graph-type-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-type-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  display: none;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: #ccc;
+  position: relative;
+  cursor: pointer;
+  left: 10px;
+}
+
+.switch-label:before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s;
+}
+
+.switch:checked + .switch-label {
+  background-color: #203866;
+}
+
+.switch:checked + .switch-label:before {
+  left: calc(100% - 24px);
+}
+
+.switch-label:active:before {
+  width: 28px;
+}
+
+.switch-label span{
+  font-size: 14px;
+  margin-left: 5px;
+  line-height: 1;
+}
+
+/* Run Computation Button */
+.btn-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.run-computation-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.run-computation-btn:hover {
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #333;
+}
+

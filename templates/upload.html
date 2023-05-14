@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monte Carlo - Upload</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Monte Carlo Simulation</div>
+  </nav>
+  <div class="container">
+    <h1>Uploaded File:</h1>
+    <table>
+      {% for column_name in column_names %}
+        <th>{{ column_name }}</th>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+</html>
