@@ -3,10 +3,17 @@
 <head>
   <title>Monte Carlo</title>
   <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }}>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="static/js/script.js"></script>
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo">Monte Carlo Simulation</div>
+    <div class="logo">
+      <img src="static/images/ume_1.png" alt="Logo 1">
+      <span class="vertical-line"></span>
+      <img src="static/images/csm_19NRM02_logo_final_d1cfc09b95.png" alt="Logo 2">
+      <span class="navbar-text">Monte Carlo Simulation</span>
+    </div>
   </nav>
   <div class="container">
     <div class="box">
@@ -51,7 +58,7 @@
           </form>
           <p>{{ message }}</p>
         </div>
-        <div class="drag-box">
+        <div class="drag-box" id="drag-drop-area">
           <i class="fas fa-cloud-upload-alt"></i>
           <span class="drag-text">Drag and drop file here</span>
         </div>
@@ -59,14 +66,16 @@
     </div>
     <div class="box">
       <h2>Write Your Own Model Function</h2>
-      <form id="model-form" method="POST" class="model-function-container">
-        <textarea name="model-function" id="model-function" placeholder="Enter your model function here (X1*X2-X3)"></textarea>
-        <button type="submit" id="calculate-btn">Calculate</button>
+      <form id="model-form" method="POST">
+        <div class="model-function-container">
+          <textarea name="model-function" id="model-function" placeholder="Enter your model function here (X1*X2-X3)"></textarea>
+          <button class="calculate-btn" type="submit" id="calculate-btn">Calculate</button>
+        </div>
       </form>
     </div>    
     <div class="box">
       <h2>Choose Options</h2>
-      <form id="options-form">
+      <form id="options-form" action='{{ url_for("calculate")}}' method="POST">
         <div class="option">
           <label for="absolute-relative">Absolute or Relative:</label>
           <select id="absolute-relative" name="absolute-relative">
@@ -98,6 +107,9 @@
           <label for="iteration-number">Iteration Number:</label>
           <input type="number" id="iteration-number" name="iteration-number" step="1">
         </div>
+        <div class="add-btn-box">
+          <button class='add-btn' type="submit" id="add-btn">Add options</button>
+        </div>
       </form>
     </div>
     <div class="box">
@@ -115,20 +127,35 @@
           <label for="result-switch" class="switch-label"></label>
       </div>
         <div class="graph-type-item">
-          <label for="correlation-switch">Correlation Plot</label>
+          <label for="correlation-switch">Spectral Correlation Plot</label>
           <input type="checkbox" id="correlation-switch" name="graph-type" value="correlation" class="switch">
           <label for="correlation-switch" class="switch-label"></label>
       </div>
         <div class="graph-type-item">
-          <label for="covariance-switch">Covariance Plot</label>
+          <label for="covariance-switch">Spectral Covariance Plot</label>
           <input type="checkbox" id="covariance-switch" name="graph-type" value="covariance" class="switch">
           <label for="covariance-switch" class="switch-label"></label>
       </div>  
       </form>
     </div>
   </div>
-  <div class="btn-container">
-    <button class="run-computation-btn" type="submit">Run the Computation</button>
+  <form action='/calculate' method='post'>
+    <!-- Form alanları burada yer alacak -->
+    <div class="btn-container">
+        <button class="run-computation-btn" type="submit" name="run-computation-btn">Run the Computation</button>
+    </div>
+  </form>
+<footer>
+  <div class="footer-container">
+    <div class="left-logo">
+      <img src="static/images/ume_1.png" alt="left-logo">
+    </div>
+    <div class="right-logos">
+      <img src="static/images/csm_19NRM02_logo_final_d1cfc09b95.png" alt="right-logo-1">
+      <div class="vertical-line"></div>
+      <img src="static/images/EMPIR_logo.jpg" alt="right-logo-2">
+    </div>
   </div>
+</footer>  
 </body>
 </html>

@@ -4,19 +4,36 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #242837;
+  background-color: #6DA2B8;
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  height: 80px;
+  padding: 0 40px; /* Navbarın kenar boşluklarını ayarlayabilirsiniz */
+  height: 100px; /* Ayarlamak istediğiniz navbar yüksekliği */
   z-index: 1;
+  transition: top 0.3s; /* Yeni eklenen geçiş efekti*/
 }
 
 .navbar .logo {
-  font-size: 2.0em;
-  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  height: 80px; /* Ayarlamak istediğiniz logo yüksekliği */
+}
+
+.navbar .vertical-line {
+  width: 1px;
+  height: 75px; /* Ayarlamak istediğiniz çizgi uzunluğu */
+  background-color: white;
+  margin: 0 20px; /* İki logonun arasındaki boşluğu ayarlayabilirsiniz */
+}
+
+.navbar .navbar-text {
+  font-size: 2.0em; /* Ayarlamak istediğiniz başlık yazısı boyutu */
+  margin-left: 30px; /* İkinci logodan sonraki boşluğu ayarlayabilirsiniz */
 }
 
 .navbar ul {
@@ -50,7 +67,7 @@
   flex: 1;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 8px rgba(79,116,132,255);
   padding: 20px;
   margin: 20px;
   width: 1000px;
@@ -184,29 +201,35 @@
 }
 
 .browse-btn {
-  margin-top: 10px;
+  width: 20%;
+  margin-top: 2px;
   display: block;
   padding: 10px;
-  font-size: 12px;
-  background-color: #242837;
-  color: #fff;
+  font-size: 80px;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #333;
   border-radius: 2px;
   cursor: pointer;
 }
 
 .browse-btn:hover {
-  background-color: #1C1F29;
+  background-color: #ccc;
+  
 }
 
 .upload-btn {
+  width: 80%;
   display: block;
   padding: 10px;
-  background: #242837;
+  background: #06557C;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -214,7 +237,7 @@
 }
 
 .upload-btn:hover {
-  background-color: #1C1F29;
+  background-color: #6DA2B8;
 }
 
 .drag-text {
@@ -223,47 +246,50 @@
   margin-top: 10px;
 }
 
-/* Model Function textarea styles */
+.drag-drop-area {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+}
 
+.drag-enter {
+  background-color: #cfcfcf;
+}
+
+/* Model Function textarea styles */
 .model-function-container {
   margin-top: 20px;
-  max-width: 500px;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
+  position: relative;
+  justify-content: space-between;
 }
 
 .model-function-container textarea {
-  width: 100%;
+  width: 97%;
   height: 200px;
   padding: 10px;
   font-size: 14px;
   resize: none;
   margin-bottom: 10px;
-
 }
 
-.calculate-button {
-  align-self: flex-end;
-}
-
-.model-function-container button {
-  display: block;
-  padding: 10px;
-  background: #242837;
+.calculate-btn {
+  padding: 10px 20px;
+  background: #06557C;
   color: #fff;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 16px;
   text-align: center;
-  text-transform: uppercase;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 10px;
 }
 
-.model-function-container button:hover {
-  background-color: #1C1F29;
+.calculate-btn:hover {
+  background-color: #6DA2B8;
 }
 
 /* Choose Options Field Styles */
@@ -275,7 +301,6 @@
 .option label {
   display: inline-block;
   width: 200px;
-  font-weight: bold;
 }
 
 .option select,
@@ -285,6 +310,36 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.add-btn-box {
+  position: relative;
+}
+
+.add-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #06557C;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.add-btn:before {
+  /*content: "\2713";  Unicode karakteri olan tik işareti */
+  margin-right: 5px;
+}
+
+.add-btn:hover{
+  background-color: #6DA2B8;
 }
 
 /* Choose Output Graphs Styles */
@@ -298,6 +353,7 @@
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .switch {
@@ -330,7 +386,7 @@
 }
 
 .switch:checked + .switch-label {
-  background-color: #203866;
+  background-color: #06557C;
 }
 
 .switch:checked + .switch-label:before {
@@ -341,30 +397,78 @@
   width: 28px;
 }
 
-.switch-label span{
+.switch-label span {
   font-size: 14px;
   margin-left: 5px;
   line-height: 1;
+  
 }
 
 /* Run Computation Button */
 .btn-container {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .run-computation-btn {
-  background-color: #333;
+  height: 50px;
+  width: 50%;
+  background-color: #06557C;
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  font-size: 16px;
 }
 
 .run-computation-btn:hover {
   background-color: #fff;
-  color: #333;
-  border: 2px solid #333;
+  color: #06557C;
+  border: 2px solid #06557C;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+.content {
+  padding-bottom: 50px; /* Footer yüksekliği kadar içeriğin altına boşluk bırakır */
+}
+
+/* Footer */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ccc;
+}
+
+.left-logo img {
+  width: 80px; /* Sol logo için genişlik */
+}
+
+.right-logos {
+  display: flex;
+  align-items: center;
+}
+
+.right-logos img {
+  width: 80px; /* Sağ logolar için genişlik */
+}
+
+.vertical-line {
+  width: 1px;
+  height: 30px;
+  background-color: black;
+  margin: 0 10px;
+}
